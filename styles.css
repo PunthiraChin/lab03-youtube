@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root{
+    --header-height:60px;
+    --sidebar-width:240px;
+}
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin:0;
+    font-family: "Roboto", sans-serif;
+}
+
+header{
+    background-color: white;
+    height:var(--header-height);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0px;
+    z-index:2;
+}
+
+/*fix width for left-nav and right-nav, and flex-shrink for center-nav */
+.left-nav{
+    height:100%;
+    display:flex;
+    align-items:center;
+}
+a.nav-logo{
+    text-decoration:none;
+    height:40px;
+    width:40px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+}
+a.nav-logo>i{
+    font-size:20px;
+}
+a.nav-logo:hover{
+    background-color: #f4f4f4;
+}
+
+.youtube-logo >img{
+    height:24px;
+    margin:16px;
+}
+
+.center-nav{
+    height:100%;
+    width:640px; /*set baseline width เอาไว้ เพื่อที่ตอนที่ยังมีพื้นที่ว่างพอ มันจะคง width เท่านี้ไว้*/
+    flex-shrink:1; /*ตอนที่ width ไม่พอสำหรับ nav ทั้งหมด จะทำให้ center-nav เป็นคนยอม shrink*/
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    gap:16px;
+}
+.center-nav > .search-bar{
+    height:40px;
+    border:0.5px solid #f4f4f4;
+    border-radius: 20px 20px 20px 20px;
+    flex-grow:1;
+    flex-shrink:1;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.center-nav > .search-bar >.search-bar-left{
+    flex-grow:1;
+    flex-shrink:1;
+    height:100%;
+    border:2px solid grey;
+    border-radius:20px 0px 0px 20px;
+    margin-left:32px;
+    padding-inline:16px 4px;
+}
+.search-bar-left>input{
+    background-color: rgba(0,0,0,0);
+    border:none;
+    width:100%;
+    height:100%;
+    font-size:16px;
+}
+.center-nav > .mic-logo:hover{
+    background-color: darkgrey;
+}
+
+.search-bar>.search-bar-right{
+    border:2px solid grey;
+    background-color:#f4f4f4;
+    height:40px;
+    width:64px; 
+    flex-shrink:0;/* search-bar-right จะไม่ยอม shrink แม้ตอนที่ search-bar ทั้งหมด shrink แต่จะไปให้ saerch-bar-left เป็นคน shrink แทน */
+    border-radius:0px 20px 20px 0px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.center-nav a.mic-logo{
+    background-color:#f4f4f4;
+    text-decoration:none;
+}
+
+.right-nav{
+    height:100%;
+    width:225px;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:8px;
+} 
+
+.right-nav>a{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+.right-nav>.right-search-logo,.right-nav>.right-mic-logo{
+    display:none;
+}
+/* ====== Main ===== */
+main {
+    display:flex;
+    min-height: calc(100vh - var(--header-height));
+}
+
+.side-bar{
+    width:var(--sidebar-width);
+    display:flex;
+    flex-direction:column;
+    overflow: scroll;
+    max-height: calc(100vh - var(--header-height));
+}
+
+.side-menu{
+    /* outline:1px solid red; */
+    border-radius:10px;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    width:100%;
+    height:40px;
+}
+.side-menu > * {
+    padding:16px;
+}
+.side-menu:hover:not(.active){
+    background-color: #f4f4f4;
+}
+.active{
+    background-color: #f4f4f4;
+}
+.you-section{
+    border-top:1px solid #f4f4f4;
+}
+.main-bar{
+    display:flex;
+    flex-direction:column;
+    position:relative;
+}
+
+.main-bar > .content-nav{
+    outline:1px solid red;
+    width: calc( 100vw - var(--sidebar-width));
+    position:sticky;
+    top:0px;
+    overflow-x: scroll;
+    white-space: nowrap;
+    position: relative;
+}
+.main-bar> .content-nav >.content-nav-item{
+    background-color:#f4f4f4;
+    border-radius:8px;
+    padding:8px 16px;
+    margin:8px 4px;
+    display: inline-block;
+}
+a.content-nav-item{
+    text-decoration:none;
+    color:black;
+}
+a.content-nav-item:hover{
+    background-color:black;
+}
+
+/*==============*/
+.main-bar> .content{
+    /* flex-grow:1; */
+    width: calc( 100vw - var(--sidebar-width));
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    align-content:flex-start;
+}
+
+.video-clip{
+    border-radius:8px;
+    width:408px;
+    height:360px;
+    margin:8px;
+    display:flex;
+    flex-direction: column;
+}
+.video-clip > video {
+    border-radius:8px;
+    width:100% ;
+    height:70%;
+}
+.video-details{
+    display:flex;
+    align-items:flex-start;
+    width:100%;
+    height:30%;
+}
+.video-description{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+}
+.video-name{
+    height:50%;
+    font-size:20px;
+    overflow:hidden;
+    text-overflow: ellipsis; 
+
+}
+
+@media (max-width:600px){
+    .center-nav{
+        display:none;
+    }
+    .right-nav>.right-search-logo,.right-nav>.right-mic-logo{
+        display:flex;
+    }   
+}
