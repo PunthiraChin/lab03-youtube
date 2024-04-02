@@ -40,6 +40,7 @@ a.nav-logo{
 }
 a.nav-logo>i{
     font-size:20px;
+    color:black
 }
 a.nav-logo:hover{
     background-color: #f4f4f4;
@@ -169,7 +170,6 @@ main {
 }
 
 .main-bar > .content-nav{
-    outline:1px solid red;
     width: calc( 100vw - var(--sidebar-width));
     position:sticky;
     top:0px;
@@ -228,7 +228,7 @@ a.content-nav-item:hover{
 }
 .video-name{
     height:50%;
-    font-size:20px;
+    font-size:18px;
     overflow:hidden;
     text-overflow: ellipsis; 
 
